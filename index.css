@@ -36,8 +36,26 @@ button:hover {
 
 #search-icon {
     position: absolute;
-    top: 32%;
+    top: 28%;
     left: 6%;
+}
+
+@media (min-width: 700px) {
+	#search-icon {
+			left: 6.5%;
+	}
+}
+
+@media (min-width: 850px) {
+	#search-icon {
+			left: 6.8%;
+	}
+}
+
+@media (min-width: 1000px) {
+	#search-icon {
+			left: 7%;
+	}
 }
 
 #cinema {
@@ -71,14 +89,50 @@ a:hover {
     margin: 50px;
 }
 
+#cinema-form-container {
+		width: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+}
+
 form {
-    width: 100%;
+    width: 90%;
     position: absolute;
-    top: 27.3%;
+		bottom: -8%;
     display: flex;
     justify-content: center;
     box-shadow: 0px 1px 2px 0px #0000000D;
     height: 38px;
+}
+
+@media (max-height: 1024px) {
+	form {
+		bottom: -6.5%;
+	}
+}
+
+@media (max-height: 750px) {
+	form {
+		bottom: -9%;
+	}
+}
+
+@media (max-height: 680px) {
+	form {
+		bottom: -10%;
+	}
+}
+
+input::placeholder {
+		font-size: 0.9em;
+}
+
+@media (max-width: 380px) {
+	input::placeholder {
+		font-size: 0.8em;
+	}
 }
 
 #search-bar {
@@ -88,7 +142,7 @@ form {
     border: none;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    padding-left: 29px;
+    padding-left: 2em;
 }
 
 #search-bar:focus {
@@ -104,6 +158,10 @@ form {
     font-size: 0.9em;
     color: #FFFFFF;
     outline: none;
+}
+
+#submit-btn:active {
+		background-color: #2E2E2F;
 }
 
 button:hover {
@@ -162,6 +220,10 @@ button:hover {
     align-items: center;
 }
 
+.add-btn:active, .remove-btn:active {
+		color: #2E2E2F;
+}
+
 button:focus {
     outline: none;
 }
@@ -197,25 +259,10 @@ button > i {
     align-self: center;
 }
 
-/* Media Queries */
 
-@media (min-width: 500px) {
-    #search-icon {
-        left: 9%;
-    }
-}
 
-@media (min-width: 750px) {
-    #search-icon {
-        left: 8.4%;
-    }
-}
 
-@media (min-width: 1000px) {
-    #search-icon {
-        left: 8%;
-    }
-}
+
 
 
 

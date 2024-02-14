@@ -56,14 +56,15 @@ onValue(movieWatchlistInDB, function(snapshot) {
     watchlist.addEventListener('click', e => {
         
       moviesArray.forEach(entry => {
-
+				console.log(entry)
           let databaseID = entry[0]
           let movieDatabaseID = entry[1]
 					
-          if(e.target.dataset.remove === movieDatabaseID && document.getElementById(movieDatabaseID).id === movieDatabaseID) {
+          if(e.target.dataset.remove === movieDatabaseID) {
             let exactLocationOfMovieInDB = ref(database, `movieWatchlist/${databaseID}`)
             remove(exactLocationOfMovieInDB)
             document.getElementById(movieDatabaseID).parentElement.parentElement.parentElement.remove()
+						// console.log(moviesArray)
       		}	
       })
     })       
