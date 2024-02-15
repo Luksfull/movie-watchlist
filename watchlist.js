@@ -13,8 +13,11 @@ const watchlist = document.getElementById('watchlist')
 const emptyPage = document.getElementById('empty-page')
 
 onValue(movieWatchlistInDB, function(snapshot) {
-    
-    emptyPage.style.display = 'none'
+
+		watchlist.innerHTML = ''
+
+		emptyPage.style.display = 'block'
+			
     let moviesArray = Object.entries(snapshot.val())
     let moviesIDArray = Object.values(snapshot.val())
     moviesIDArray.forEach(movieID => {
@@ -24,7 +27,7 @@ onValue(movieWatchlistInDB, function(snapshot) {
       fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movieID}`)
         .then(res => res.json())
         .then(data => {
-
+					
           watchlist.innerHTML += 
 						`
             <div class='result'>
@@ -50,24 +53,28 @@ onValue(movieWatchlistInDB, function(snapshot) {
                 </div>
             </div>                    
             `
+
+						if (watchlist.innerHTML !== '') {
+							emptyPage.style.display = 'none'
+						}
+
+						document.querySelectorAll('.remove-btn').forEach(button => {
+							button.addEventListener('click', (e) => {
+								for (let i = 0; i < moviesArray.length; i++) {
+									let currentItem = moviesArray[i]
+									let currentItemID = currentItem[0]
+									let currentItemValue = currentItem[1]
+
+									if(e.target.dataset.remove === currentItemValue && document.getElementById(currentItemValue).id === currentItemValue) {
+										console.log(currentItem)
+										let exactLocationOfMovieInDB = ref(database, `movieWatchlist/${currentItemID}`)
+										remove(exactLocationOfMovieInDB)
+									}
+								}
+							})
+						})
         })      
-    })
-    
-    watchlist.addEventListener('click', e => {
-        
-      moviesArray.forEach(entry => {
-				console.log(entry)
-          let databaseID = entry[0]
-          let movieDatabaseID = entry[1]
-					
-          if(e.target.dataset.remove === movieDatabaseID) {
-            let exactLocationOfMovieInDB = ref(database, `movieWatchlist/${databaseID}`)
-            remove(exactLocationOfMovieInDB)
-            document.getElementById(movieDatabaseID).parentElement.parentElement.parentElement.remove()
-						// console.log(moviesArray)
-      		}	
-      })
-    })       
-})
-                     
+    })   
+})  
+              
 
