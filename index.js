@@ -13,8 +13,6 @@ const searchBtn = document.getElementById('submit-btn')
 let searchName = document.getElementById('search-bar')
 let filmList = document.getElementById('film-list')
 
-// https://movie-watchlist-zla-default-rtdb.europe-west1.firebasedatabase.app/
-
 searchBtn.addEventListener('click', searchFilms)
 
 function searchFilms(e) {
@@ -70,7 +68,6 @@ function searchFilms(e) {
 filmList.addEventListener('click', e => {
     if(e.target.dataset.add) {
         const movieID = e.target.dataset.add
-        // addToWatchlist(movieID)
         addToWatchlist(movieID)
     }
 })
