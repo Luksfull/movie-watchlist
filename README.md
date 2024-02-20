@@ -5,6 +5,9 @@ Movies can be added to the watchlist or be removed from it.
 
 The watchlist is connected to a Firebase database.
 
+App deployed with Neflify.
+Live site: https://ls-movie-watchlist.netlify.app/
+
 ![Desktop view](/images/DesktopView.jpg)
 ![Phone view](/images/PhoneView.jpg)
 ![Watchlist view](/images/Watchlist.jpg)
